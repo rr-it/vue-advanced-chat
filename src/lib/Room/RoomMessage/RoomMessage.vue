@@ -25,7 +25,10 @@
 		<div
 			v-else
 			class="vac-message-box"
-			:class="{ 'vac-offset-current': message.senderId === currentUserId }"
+			:class="{
+        'vac-offset-current': message.senderId === currentUserId,
+				'vac-message-box-deleted': message.deleted
+      }"
 			@click="selectMessage"
 		>
 			<slot name="message" v-bind="{ message }">
