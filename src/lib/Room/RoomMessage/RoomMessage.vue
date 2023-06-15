@@ -56,13 +56,14 @@
 				>
 					<div
 						class="vac-message-card"
-						:class="{
-							'vac-message-highlight': isMessageHover,
-							'vac-message-current': message.senderId === currentUserId,
-							'vac-message-deleted': message.deleted,
-							'vac-item-clickable': messageSelectionEnabled,
-							'vac-message-selected': isMessageSelected
-						}"
+						:class="[
+							isMessageHover ? 'vac-message-highlight' : '',
+							message.senderId === currentUserId ? 'vac-message-current': '',
+							message.deleted ? 'vac-message-deleted' : '' ,
+							messageSelectionEnabled ? 'vac-item-clickable' : '',
+							isMessageSelected ? 'vac-message-selected' : '',
+							message.section === 1 ? 'vac-message-priority-low' : ''
+						]"
 						@mouseover="onHoverMessage"
 						@mouseleave="onLeaveMessage"
 					>
