@@ -62,7 +62,8 @@
 							message.deleted ? 'vac-message-deleted' : '' ,
 							messageSelectionEnabled ? 'vac-item-clickable' : '',
 							isMessageSelected ? 'vac-message-selected' : '',
-							message.section === 1 ? 'vac-message-priority-low' : ''
+							message.section === 1 ? 'vac-message-priority-low' : '',
+							messageMarkerClass
 						]"
 						@mouseover="onHoverMessage"
 						@mouseleave="onLeaveMessage"
@@ -347,7 +348,10 @@ export default {
 					message => message._id === this.message._id
 				)
 			)
-		}
+		},
+    messageMarkerClass() {
+      return this.message.markerClass ? 'vac-message-marker-' + this.message.markerClass : ''
+    }
 	},
 
 	watch: {
